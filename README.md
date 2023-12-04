@@ -1,1 +1,1 @@
-# bergemannhoehne-frontend
+# Bergemann & Höhne - Frontend-Entwickler

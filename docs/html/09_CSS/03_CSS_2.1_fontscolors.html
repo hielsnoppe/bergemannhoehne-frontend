@@ -1,0 +1,94 @@
+<html>
+<head>
+    <title>Fonts and Colors</title>
+
+    <!-- entweder so -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <!-- oder so -->
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+html {
+    font-family: 'Open Sans';
+}
+    </style>
+</head>
+<body>
+    <h1>Hello World!</h1>
+    <section style="font-size: 2em">
+        <table style="font-size: 2em;">
+            <tr>
+                <td>default</td>
+                <td>Lorem ipsum dolor sit amet.</td>
+            </tr>
+            <tr>
+                <td>system-ui</td>
+                <td style="font-family: system-ui;">Lorem ipsum dolor sit amet.</td>
+            </tr>
+            <tr>
+                <td>serif</td>
+                <td style="font-family: serif;">Lorem ipsum dolor sit amet.</td>
+            </tr>
+            <tr>
+                <td>sans-serif</td>
+                <td style="font-family: sans-serif;">Lorem ipsum dolor sit amet.</td>
+            </tr>
+            <tr>
+                <td>monospace</td>
+                <td style="font-family: monospace;">Lorem ipsum dolor sit amet.</td>
+            </tr>
+            <tr>
+                <td>Open Sans</td>
+                <td style="font-family: 'Open Sans';">Lorem ipsum dolor sit amet.</td>
+            </tr>
+        </table>
+    </section>
+    <section>
+        <table>
+            <tr>
+                <td>48 px</td>
+                <td style="font-size: 48px;">Lorem ipsum dolor sit amet.</td>
+            </tr>
+            <tr>
+                <td>48 pt</td>
+                <td style="font-size: 48pt;">Lorem ipsum dolor sit amet.</td>
+            </tr>
+            <tr>
+                <td>1 em</td>
+                <td style="font-size: 1em;">Lorem ipsum dolor sit amet.</td>
+            </tr>
+            <tr>
+                <td>2 em</td>
+                <td style="font-size: 2em;">Lorem ipsum dolor sit amet.</td>
+            </tr>
+            <tr>
+                <td>5 em</td>
+                <td style="font-size: 5em;">Lorem ipsum dolor sit amet.</td>
+            </tr>
+            <tr>
+                <td>rem</td>
+                <td>Lorem ipsum dolor sit amet.</td>
+            </tr>
+        </table>
+
+        <table style="font-size: 2em;">
+            <tr>
+                <td>2 em</td>
+                <td>2 rem</td>
+            </tr>
+            <tr>
+                <td style="font-size: 2em">Lorem ipsum dolor sit amet.</td>
+                <td style="font-size: 2rem;">Lorem ipsum dolor sit amet.</td>
+            </tr>
+        </table>
+    </section>
+    <div style="font-size: 48px;">
+        <div style="width:200px; background-color: blue">200px</div>
+        <div style="width:20em; background-color: red;">20em</div>
+    </div>
+    <div style="height: 20em;"></div>
+</body>
+</html>

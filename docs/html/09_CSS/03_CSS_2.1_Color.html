@@ -1,0 +1,71 @@
+<html>
+<head>
+    <title>Color</title>
+    <style>
+#colors {
+    position: relative;
+    background-color: #000;
+    width: 13.5em;
+    height: 13em;
+}
+#colors span::before {
+    content: "\2B22";
+    font-size: 5em;
+}
+#colors span {
+    position: absolute;
+}
+.hex1 { top: 0;     left: 2.5em; color: #f00; }
+.hex2 { top: 0;     left: 6.5em; color: #ff0; }
+.hex3 { top: 3.5em; left: 0.4em; color: #f0f; }
+.hex4 { top: 3.5em; left: 4.5em; color: #fff; }
+.hex5 { top: 3.5em; left: 8.6em; color: #0f0; }
+.hex6 { top: 7em;   left: 2.5em; color: #00f; }
+.hex7 { top: 7em;   left: 6.5em; color: #0ff; }
+    </style>
+</head>
+<body>
+    <h1>Farbgestaltung</h1>
+
+    <p>Siehe auch den englischen MDN-Artikel <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_colors/Applying_color">Applying color to HTML elements using CSS</a>.</small>
+
+    <h2>Dinge, die wir färben können</h2>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_colors/Applying_color#things_that_can_have_color">Things that can have color</a></p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Was</th>
+                <th>CSS-Eigenschaft</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Textfarbe</td>
+                <td>color</td>
+            </tr>
+            <tr>
+                <td>Hintergrundfarbe</td>
+                <td>background-color</td>
+            </tr>
+            <tr>
+                <td>Rahmenfarbe</td>
+                <td>border-color</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>RGB</h2>
+
+    <div id="colors">
+        <span class="hex1"></span>
+        <span class="hex2"></span>
+        <span class="hex3"></span>
+        <span class="hex4"></span>
+        <span class="hex5"></span>
+        <span class="hex6"></span>
+        <span class="hex7"></span>
+    </div>
+</body>
+</html>

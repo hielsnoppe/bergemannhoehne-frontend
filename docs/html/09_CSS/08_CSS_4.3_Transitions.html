@@ -1,0 +1,122 @@
+<html>
+<head>
+    <title>CSS 4.3 - Transitions</title>
+    <style>
+#ex1 {
+    & h1 {
+        position: relative;
+        font-size: 5rem;
+    }
+
+    & h1::before {  
+        content: " ";
+        display: block;
+        position: absolute;
+
+        top: 0; right: 0; bottom: 0; left: 0;
+        inset: 0 0 0 0;
+        background: hsl(200 100% 80%);
+
+        z-index: -1;
+
+        transform: scaleX(0);
+        transform-origin: bottom right;
+        transition: transform .3s ease;
+    }
+
+    & h1:hover::before {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+}
+#ex2 {
+    & nav {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    & a {
+        flex: 1;
+        background-color: #333;
+        color: #fff;
+        border: 1px solid;
+        padding: 0.5rem;
+        text-align: center;
+        text-decoration: none;
+        transition: all 0.5s ease-out;
+    }
+
+    & a:hover, & a:focus {
+        background-color: #fff;
+        color: #333;
+    }
+}
+
+#colors {
+    position: relative;
+    background-color: #000;
+    width: 13.5em;
+    height: 13em;
+}
+#colors a::before {
+    content: "\2B22";
+    font-size: 5em;
+}
+#colors a {
+    text-decoration: none;
+    position: absolute;
+    margin: -2.5em 0 0 -2.5em;
+    transition: 1s ease;
+    transition-property: transform, z-index;
+}
+#colors a:hover, #colors a:focus {
+    transform: scale(1.5) rotate(180deg);
+    z-index: 1;
+}
+.hex1 { top: 2.5em; left: 5.0em; color: #f00; }
+.hex2 { top: 2.5em; left: 9.0em; color: #ff0; }
+.hex3 { top: 6.0em; left: 2.9em; color: #f0f; }
+.hex4 { top: 6.0em; left: 7.0em; color: #fff; }
+.hex5 { top: 6.0em; left: 11.1em; color: #0f0; }
+.hex6 { top: 9.5em; left: 5.0em; color: #00f; }
+.hex7 { top: 9.5em; left: 9.0em; color: #0ff; }
+    </style>
+</head>
+<body>
+    <article style="width: 50%; margin: 0 auto">
+
+        <h1>Transitions</h1>
+
+        <h2>Example 1</h2>
+
+        <section id="ex1">
+            <h1>Hover Me</h1>
+        </section>
+
+        <h2>Example 2</h2>
+
+        <section id="ex2">
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Links</a>
+            </nav>
+        </section>
+
+        <h2>Example 3</h2>
+
+        <section>
+            <div id="colors">
+                <a class="hex1" href="#" tabindex="1"></a>
+                <a class="hex2" href="#" tabindex="2"></a>
+                <a class="hex3" href="#" tabindex="6"></a>
+                <a class="hex4" href="#" tabindex="7"></a>
+                <a class="hex5" href="#" tabindex="3"></a>
+                <a class="hex6" href="#" tabindex="5"></a>
+                <a class="hex7" href="#" tabindex="4"></a>
+            </div>
+        </section>
+    </article>
+</body>
+</html>
