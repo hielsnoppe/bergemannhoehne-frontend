@@ -1,0 +1,17 @@
+#pokerTable {
+    width: 75%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 5fr;
+    grid-template-areas: "stack dump community";
+
+    & .stack {
+        grid-area: stack;
+    }
+    & .dump {
+        grid-area: dump;
+    }
+    & .community {
+        grid-area: community;
+    }
+}

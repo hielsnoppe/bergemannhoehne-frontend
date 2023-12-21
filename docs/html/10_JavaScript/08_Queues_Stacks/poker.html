@@ -1,0 +1,67 @@
+<html>
+<head>
+    <link rel="stylesheet" href="../../../css/cards/cards.css">
+    <link rel="stylesheet" href="poker.css">
+    <script src="poker.js"></script>
+    <script>
+class Player {
+    constructor (name) {
+        this.name = name;
+        this.hand = [];
+    }
+
+    fold = () => {
+        game.dump.push(...this.hand);
+        this.hand = [];
+        apply();
+    }
+}
+
+class Game {
+    constructor () {
+        this.stack = cartesian(ranks, suits).map((card) => new Card(card[0], card[1]));
+        shuffle(this.stack);
+
+        this.dump = [];
+        this.table = [];
+        this.players = [ new Player('Spieler') ];
+
+        this.stage = 'init';
+    }
+
+    turnCard = () => {
+        this.table.push(this.stack.pop());
+        apply();
+    }
+
+    burnCard = () => {
+        this.dump.push(this.stack.pop());
+        apply();
+    }
+
+    dealCard = (player) => {
+        player.hand.push(this.stack.pop());
+        apply();
+    }
+}
+    </script>
+</head>
+<body onload="init()">
+    <div class="playingCards rotateHand">
+        <div id="pokerTable">
+            <div class="stack">
+                <button class="card back" id="stack" onclick="deal()"></button>
+            </div>
+            <div class="dump">
+                <ul class="deck" id="dump"></ul>
+            </div>
+            <div class="community">
+                <ul class="table" id="table"></ul>
+            </div>
+        </div>
+        <div class="player" id="player0">
+            <ul class="hand" id="hand" onclick="game.players[0].fold()"></ul>
+        </div>
+    </div>
+</body>
+</html>
