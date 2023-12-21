@@ -15,3 +15,7 @@
         grid-area: community;
     }
 }
+
+button.card {
+    scale: 1.2;
+}

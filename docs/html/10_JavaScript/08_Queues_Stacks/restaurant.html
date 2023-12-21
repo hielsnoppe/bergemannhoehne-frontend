@@ -1,0 +1,64 @@
+<html>
+<head>
+    <link rel="stylesheet" href="restaurant.css">
+    <script src="datatypes.js"></script>
+    <script src="restaurant.js"></script>
+    <script>
+var ordersPlaced = new Queue();
+var ordersCooked = new Queue();
+var plates = new Stack();
+var number = 1;
+
+const placeOrder = () => {
+    ordersPlaced.enqueue(new Order(number, [ null, null ]))
+    number += 1;
+}
+
+const cookOrder = () => {
+    const order = ordersPlaced.dequeue();
+    ordersCooked.enqueue(order);
+}
+
+const eatOrder = () => {
+    const order = ordersCooked.dequeue();
+    order.items.forEach((item) => {
+        plates.push({});
+    });
+}
+
+const washDish = () => {
+    plates.pop();
+}
+    </script>
+</head>
+<body>
+    <div style="grid-area: order;">
+        <h1>Bestellung</h1>
+        <form onsubmit="return handleSubmit(event)">
+            <input type="submit" value="Bestellung aufgeben">
+        </form>
+    </div>
+    <div style="grid-area: kitchen;">
+        <h1>Küche</h1>
+        <div class="two-columns">
+            <button id="btn-cook" onclick="handleClickCook(event)">Kochen</button>
+            <ul id="kitchen"></ul>
+        </div>
+    </div>
+    <div style="grid-area: collect;">
+        <h1>Abholung</h1>
+        <span id="text-next">&nbsp;</span>
+    </div>
+    <div style="grid-area: eat;">
+        <h1>Gäste</h1>
+        <ul id="tables"></ul>
+    </div>
+    <div style="grid-area: dishes;">
+        <h1>Geschirrrückgabe</h1>
+        <div class="two-columns">
+            <button id="btn-wash" onclick="handleClickWash(event)">Abwaschen</button>
+            <ul id="plates"></ul>
+        </div>
+    </div>
+</body>
+</html>

@@ -9,16 +9,36 @@ function shuffle (array) {
     }
 }
 
+const cards = () => {
+    const cards = cartesian(ranks, suits).map((card) => new Card(card[0], card[1]));
+    shuffle(cards);
+    return cards;
+}
+
 const ranks = [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A' ];
 const suits = ['diams', 'hearts', 'spades', 'clubs'];
 const stages = ['init', 'preflop', 'flop', 'turn', 'river'];
 
 var game;
-var html;
 
-const init = () => {
-    game = new Game();
-    apply();
+class Card {
+    constructor (rank, suit) {
+        this.rank = rank;
+        this.suit = suit;
+    }
+
+    toHTML = (side) => {
+        switch (side) {
+            case 'back':
+                return `<div class="card back"></div>`;
+            case 'front':
+            default:
+                return `<div class="card rank-${this.rank} ${this.suit}">
+                    <span class="rank">${this.rank}</span>
+                    <span class="suit">&${this.suit};</span>
+                    </div>`;
+        }
+    }
 }
 
 const apply = () => {
@@ -42,7 +62,12 @@ const apply = () => {
     })
 }
 
-const deal = () => {
+const handleDocumentReady = (event) => {
+    game = new Game();
+    apply();
+}
+
+const handleClickStack = (event) => {
     switch (game.stage) {
         case 'init':
             game.players.forEach((player) => {
@@ -76,22 +101,7 @@ const deal = () => {
     apply();
 }
 
-class Card {
-    constructor (rank, suit) {
-        this.rank = rank;
-        this.suit = suit;
-    }
-
-    toHTML = (side) => {
-        switch (side) {
-            case 'back':
-                return `<div class="card back"></div>`;
-            case 'front':
-            default:
-                return `<div class="card rank-${this.rank} ${this.suit}">
-                    <span class="rank">${this.rank}</span>
-                    <span class="suit">&${this.suit};</span>
-                    </div>`;
-        }
-    }
+const handleClickFold = (event) => {
+    game.players[0].fold();
+    apply();
 }
