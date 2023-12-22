@@ -6,19 +6,19 @@ body {
         "eat eat dishes";
 }
 #btn-cook {
-    background-image: url('img/chef.png');
+    background-image: url('../img/chef.png');
     background-size: 200px 300px;
     width: 200px;
     height: 300px;
 }
 #btn-wash {
-    background-image: url('img/dishes.png');
+    background-image: url('../img/dishes.png');
     background-size: 200px 300px;
     width: 200px;
     height: 300px;
 }
 #btn-eat {
-    background-image: url('img/pizza.png');
+    background-image: url('../img/pizza.png');
     background-size: 200px 150px;
     width: 200px;
     height: 150px;

@@ -11,8 +11,11 @@ class Player {
     }
 
     fold = () => {
-        game.dump.push(...this.hand);
-        this.hand = [];
+        /**
+         * Leg die Karten der Hand (this.hand) auf den Ablagestapel (game.dump)
+         */
+        
+        
     }
 }
 
@@ -28,15 +31,27 @@ class Game {
     }
 
     turnCard = () => {
-        this.table.push(this.stack.pop());
+        /**
+         * Nimm eine Karte vom Stapel (this.stack) und lege sie auf den
+         * Tisch (this.table)
+         */
+        
     }
 
     burnCard = () => {
-        this.dump.push(this.stack.pop());
+        /**
+         * Nimm eine Karte vom Stapel (this.stack) und lege sie auf den
+         * Ablagestapel (this.dump)
+         */
+
     }
 
     dealCard = (player) => {
-        player.hand.push(this.stack.pop());
+        /**
+         * Nimm eine Karte vom Stapel (this.stack) und gib sie dem Spieler auf
+         * die Hand (player.hand)
+         */
+        
     }
 }
     </script>

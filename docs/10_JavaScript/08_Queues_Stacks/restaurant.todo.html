@@ -4,31 +4,55 @@
     <script src="js/datatypes.js"></script>
     <script src="js/restaurant.js"></script>
     <script>
+// aufgegebene Bestellungen
 var ordersPlaced = new Queue();
+// fertige Bestellungen
 var ordersCooked = new Queue();
+// Schmutzige Teller
 var plates = new Stack();
+// Bestell-Nummer zum Mitzählen
 var number = 1;
 
 const placeOrder = () => {
     const order = new Order(number, [ null, null ]);
-    ordersPlaced.enqueue(order);
-    number += 1;
+    /**
+     * TODO
+     * Füge die neue Bestellung der Warteschlange hinzu.
+     * Erhöhe die Bestell-Nummer um 1
+     */
+
+
 }
 
 const cookOrder = () => {
-    const order = ordersPlaced.dequeue();
-    ordersCooked.enqueue(order);
+    /**
+     * TODO
+     * Entferne die vorderste Bestellung aus der Warteschlange und füge sie den
+     * fertigen Bestellungen hinzu.
+     */
+    
+    
 }
 
 const eatOrder = () => {
-    const order = ordersCooked.dequeue();
-    order.items.forEach((item) => {
-        plates.push({});
-    });
+    /**
+     * TODO
+     * Entferne die vorderste Bestellung aus den fertigen Bestellungen und lege
+     * für jedes Gericht in der Bestellung einen leeren Teller (null oder {})
+     * auf den Stapel mit schmutzigem Geschirr.
+     */
+    
+     
+
+    
 }
 
 const washDish = () => {
-    plates.pop();
+    /**
+     * TODO
+     * Entferne einen Teller vom Stapel mit schmutzigem Geschirr.
+     */
+    
 }
     </script>
 </head>
