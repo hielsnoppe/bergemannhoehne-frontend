@@ -1,0 +1,43 @@
+<html>
+<head>
+    <title>JavaScript 2.1</title>
+    <script>
+function steuer () {
+    let vname = prompt('Vorname:');
+    let nname = prompt('Nachname:');
+    let einkommen = prompt('Einkommen:');
+    let steuersatz; // Deklaration
+
+    if (einkommen < 10000) {
+        // alert('Steuersatz: ' + 20);
+        // document.getElementById('text').innerHTML = 'Steuersatz: ' + 20;
+        steuersatz = 20;
+    }
+    else if (einkommen < 40000) {
+        // alert('Steuersatz: ' + 30);
+        // document.getElementById('text').innerHTML = 'Steuersatz: ' + 30;
+        steuersatz = 30;
+    }
+    else {
+        // alert('Steuersatz: ' + 40);
+        // document.getElementById('text').innerHTML = 'Steuersatz: ' + 40;
+        steuersatz = 40;
+    }
+
+    document.getElementById('text').innerHTML
+        = 'Steuersatz: ' + steuersatz;
+}
+
+// document.addEventListener('DOMContentLoaded', steuer);
+// steuer();
+
+// window.setTimeout(meineFunktion, 3000);
+// document.getElementById('beispiel').setAttribute('class', 'red');
+// const tick = window.setTimeout(function () { alert('Boo!'); }, 5000)
+    </script>
+</head>
+<body>
+    <div id="text">Hier steht nichts.</div>
+    <button id="knopf">Klick mich!</button>
+</body>
+</html>

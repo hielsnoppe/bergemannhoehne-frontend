@@ -8,7 +8,7 @@
         font-size: 5rem;
     }
 
-    & h1::before {  
+    & h1::before {
         content: " ";
         display: block;
         position: absolute;
@@ -18,15 +18,27 @@
         background: hsl(200 100% 80%);
 
         z-index: -1;
-
+        
         transform: scaleX(0);
         transform-origin: bottom right;
         transition: transform .3s ease;
+        /*
+        */
+        /*
+        Y
+        |
+        |
+        |
+        |
+        +-------------- X
+        */
     }
 
     & h1:hover::before {
         transform: scaleX(1);
         transform-origin: bottom left;
+        /*
+        */
     }
 }
 #ex2 {
@@ -65,7 +77,7 @@
 #colors a {
     text-decoration: none;
     position: absolute;
-    margin: -2.5em 0 0 -2.5em;
+    /*margin: -2.5em 0 0 -2.5em;*/
     transition: 1s ease;
     transition-property: transform, z-index;
 }
@@ -73,6 +85,7 @@
     transform: scale(1.5) rotate(180deg);
     z-index: 1;
 }
+/*
 .hex1 { top: 2.5em; left: 5.0em; color: #f00; }
 .hex2 { top: 2.5em; left: 9.0em; color: #ff0; }
 .hex3 { top: 6.0em; left: 2.9em; color: #f0f; }
@@ -80,6 +93,14 @@
 .hex5 { top: 6.0em; left: 11.1em; color: #0f0; }
 .hex6 { top: 9.5em; left: 5.0em; color: #00f; }
 .hex7 { top: 9.5em; left: 9.0em; color: #0ff; }
+*/
+.hex1 { top: 0;     left: 2.5em; color: #f00; }
+.hex2 { top: 0;     left: 6.5em; color: #ff0; }
+.hex3 { top: 3.5em; left: 0.4em; color: #f0f; }
+.hex4 { top: 3.5em; left: 4.5em; color: #fff; }
+.hex5 { top: 3.5em; left: 8.6em; color: #0f0; }
+.hex6 { top: 7em;   left: 2.5em; color: #00f; }
+.hex7 { top: 7em;   left: 6.5em; color: #0ff; }
     </style>
 </head>
 <body>

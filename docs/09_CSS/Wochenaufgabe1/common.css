@@ -1,0 +1,123 @@
+/*
+ * Generic styles
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+:root {
+    --text-color: blueviolet;
+}
+
+* {
+	vertical-align: baseline;
+	font-weight: inherit;
+	font-family: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	border: 0 none;
+	outline: 0;
+	padding: 0;
+	margin: 0;
+}
+
+body { 
+    color: var(--text-color);
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+/*
+ * Common components and utilities
+ */
+
+.center {
+    text-align: center;
+}
+.specialty {
+    display: flex;
+    
+    &.reverse {
+        flex-direction: row-reverse;
+    }
+}
+.purple {
+    background-color: blueviolet;
+    color: white;
+}
+
+ul.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    & li {
+        display: block;
+    }
+}
+
+/*
+ * Individual components
+ */
+
+#topnav {
+    display: flex;
+
+    & button {
+        width: 3em;
+    }
+    & ul {
+        display: flex;
+    }
+    & ul li {
+        flex: 1;
+        display: block;
+    }
+    & ul li a {
+        text-decoration: none;
+        color: var(--text-color);
+    }
+    & h1 {
+        flex: auto;
+        text-align: center;
+        font-size: 2em;
+    }
+}
+
+#gallery {
+
+    & ul {
+        margin: 0.25em 0;
+        gap: 0.25em;
+    }
+
+    & ul li {
+        flex-basis: 100px;
+    }
+
+    & img {
+        object-fit: cover;
+        max-width: 100%;
+    }
+}
+
+ul#references {
+    display: flex;
+    column-gap: 0.2em;
+    justify-content: space-between;
+
+    & li {
+        display: block;
+        color: black;
+        background-color: white;
+        border: 1px solid darkgray;
+        border-radius: 0.5em;
+    }
+}
+
+#team img {
+    border: 1px solid black;
+    border-radius: 50%;
+}

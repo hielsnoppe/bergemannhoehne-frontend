@@ -1,0 +1,59 @@
+<html>
+<head>
+    <title>JavaScript 2.1</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script>
+/*
+function steuer () {
+    let einkommen = prompt('Einkommen');
+    let steuersatz = 20;
+    document.getElementById('text').innerHTML = steuersatz;
+}
+function main () {
+    document.getElementById('save')
+        .addEventListener('click', onClickSave);
+    document.getElementById('delete')
+        .addEventListener('click', onClickDelete);
+}
+function onClickSave () {
+    steuer();
+}
+function onClickDelete () {
+    alert('Hallo Zwei!');
+}
+*/
+
+// Auf Seitenaufbau warten:
+document.addEventListener('DOMContentLoaded', onReady);
+function onReady () {
+    // Elemente finden:
+    const in_weight = document.getElementById('weight');
+    const in_height = document.getElementById('height');
+    const btn_calc = document.getElementById('calc');
+    const ergebnis = document.getElementById('ergebnis');
+
+    // Auf Knopfdruck warten:
+    btn_calc.addEventListener('click', function () {
+        // Gewicht und Größe einlesen:
+        const mass   = in_weight.value;
+        const height = in_height.value;
+        // BMI berechnen:
+        const bmi    = mass / (height * height);
+        // Ergebnis anzeigen:
+        ergebnis.innerHTML = bmi;
+    });
+}
+    </script>
+</head>
+<body>
+    <input id="weight" type="number">
+    <input id="height" type="number">
+    <button id="calc">Berechnen</button>
+    <p>Dein BMI beträgt: <span id="ergebnis"></span></p>
+<!-- 
+    <hr>
+    <button id="save">Speichern</button><br/>
+    <button id="delete">Löschen</button>
+    <span id="text"></span> -->
+</body>
+</html>
