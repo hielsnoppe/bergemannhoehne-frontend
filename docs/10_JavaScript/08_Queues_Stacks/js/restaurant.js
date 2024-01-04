@@ -10,11 +10,11 @@ class Order {
             case 'kitchen':
                 html = '<dt>Order ' + this.no + '</dt>';
                 this.items.forEach((item) => {
-                    html += '<dd>' + 'Pizza' + '</dd>';
+                    html += '<dd>' + item + '</dd>';
                 });
                 return html;
             case 'table':
-                html = '<button id="btn-eat" onclick="handleClickEat(event)">Essen</button>';
+                html = '<button class="btn-eat" onclick="handleClickEat(event)">Essen</button>';
                 return html;
         }
     }

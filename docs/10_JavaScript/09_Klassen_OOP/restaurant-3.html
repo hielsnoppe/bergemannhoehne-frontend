@@ -1,0 +1,199 @@
+<html>
+<head>
+    <link rel="stylesheet" href="css/restaurant.css">
+    <script src="js/datatypes.js"></script>
+    <script src="js/restaurant.js"></script>
+    <script>
+var ordersPlaced = new Queue();
+var ordersCooked = new Queue();
+var plates = new Stack();
+var number = 1;
+
+class Pizza {
+    
+    constructor (name, price) {
+        this.name = name
+        this.price = price
+    }
+
+    id = () => 'pizza-' + this.name.toLowerCase();
+
+    toHTML = () => {
+        const id = this.name.toLowerCase();
+        return `<div>
+                    <label for="${this.id()}-count">Pizza ${this.name} (${this.price})</label>
+                    <input type="number" min="0" max="9" value="0" id="${this.id()}-count">
+                </div>`;
+    }
+}
+
+const pizzas = [
+    new Pizza('Margherita', 7.5),
+    new Pizza('Funghi', 9),
+    new Pizza('Spinaci', 9),
+    new Pizza('Diavolo', 12.5),
+    new Pizza('Hawaii', 11)
+]
+
+function onLoad () {
+    const e_pizzas = document.getElementById('pizzas');
+    for (pizza of pizzas) {
+        e_pizzas.innerHTML += pizza.toHTML();
+    }
+}
+
+const orderFromForm = (number) => {
+
+    const items = [];
+
+    for (pizza of pizzas) {
+
+        const e_pizza = document.getElementById(pizza.id() + '-count');
+
+        for (let i = 0; i < e_pizza.value; i++) {
+            items.push('Pizza ' + pizza.name);
+        }
+    }
+
+    /*
+    const e_margherita = document.getElementById('pizza-margherita-count');
+    const e_funghi = document.getElementById('pizza-funghi-count');
+    const e_spinaci = document.getElementById('pizza-spinaci-count');
+    const e_diavolo = document.getElementById('pizza-diavolo-count'); // neu
+
+    const price_margherita = 7.5;
+    const price_funghi = 9.0;
+    const price_spinaci = 9.0;
+    const price_diavolo = 12.5; // neu
+
+    for (let i = 0; i < e_margherita.value; i++) {
+        total += price_margherita;
+        items.push('Pizza Margherita');
+    }
+    for (let i = 0; i < e_funghi.value; i++) {
+        total += price_funghi;
+        items.push('Pizza Funghi');
+    }
+    for (let i = 0; i < e_spinaci.value; i++) {
+        total += price_spinaci;
+        items.push('Pizza Spinaci');
+    }
+    */
+
+    return new Order(number, items);
+}
+
+const updateTotal = () => {
+
+    let total = 0;
+
+    for (pizza of pizzas) {
+
+        const e_count = document.getElementById(pizza.id() + '-count');
+
+        for (let i = 0; i < e_count.value; i++) {
+            total += pizza.price;
+        }
+    }
+
+    /*
+    const e_margherita = document.getElementById('pizza-margherita-count');
+    const price_margherita = 7.5;
+
+    for (let i = 0; i < e_margherita.value; i++) {
+        total += price_margherita;
+    }
+
+    const e_funghi = document.getElementById('pizza-funghi-count');
+    const price_funghi = 9.0;
+
+    for (let i = 0; i < e_funghi.value; i++) {
+        total += price_funghi;
+    }
+
+    const e_spinaci = document.getElementById('pizza-spinaci-count');
+    const price_spinaci = 9.0;
+
+    for (let i = 0; i < e_spinaci.value; i++) {
+        total += price_spinaci;
+    }
+
+    const e_diavolo = document.getElementById('pizza-diavolo-count');
+    const price_diavolo = 12.5;
+
+    for (let i = 0; i < e_diavolo.value; i++) {
+        total += price_diavolo;
+    }
+    */
+
+    const e_total = document.getElementById('total-price');  
+
+    // Write total to HTML
+    e_total.innerHTML = total;
+}
+
+const placeOrder = () => {
+    // 1. Neue Funktion um Order zu erzeugen
+    // const order = new Order(number, [ null, null ]);
+    const order = orderFromForm(number);
+    console.log(order);
+    ordersPlaced.enqueue(order);
+    number += 1;
+}
+
+const cookOrder = () => {
+    const order = ordersPlaced.dequeue();
+    ordersCooked.enqueue(order);
+}
+
+const eatOrder = () => {
+    const order = ordersCooked.dequeue();
+    order.items.forEach((item) => {
+        plates.push({});
+    });
+}
+
+const washDish = () => {
+    plates.pop();
+}
+
+const handleChange = (event) => {
+    updateTotal();
+}
+    </script>
+</head>
+<body>
+    <div style="grid-area: order;">
+        <h1>Bestellung</h1>
+        <form onsubmit="return handleSubmit(event)" onchange="handleChange(event)">
+            <div id="pizzas"></div>
+
+            <p>Gesamtpreis: <span id="total-price"></span></p>
+
+            <input type="submit" value="Bestellung aufgeben">
+        </form>
+    </div>
+    <div style="grid-area: kitchen;">
+        <h1>Küche</h1>
+        <div class="two-columns">
+            <button id="btn-cook" onclick="handleClickCook(event)">Kochen</button>
+            <ul id="kitchen"></ul>
+        </div>
+    </div>
+    <div style="grid-area: collect;">
+        <h1>Abholung</h1>
+        <span id="text-next">&nbsp;</span>
+    </div>
+    <div style="grid-area: eat;">
+        <h1>Gäste</h1>
+        <ul id="tables"></ul>
+    </div>
+    <div style="grid-area: dishes;">
+        <h1>Geschirrrückgabe</h1>
+        <div class="two-columns">
+            <button id="btn-wash" onclick="handleClickWash(event)">Abwaschen</button>
+            <ul id="plates"></ul>
+        </div>
+    </div>
+</body>
+</html>

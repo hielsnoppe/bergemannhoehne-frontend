@@ -1,0 +1,148 @@
+<html>
+<head>
+    <link rel="stylesheet" href="css/restaurant.css">
+    <script src="js/datatypes.js"></script>
+    <script src="js/restaurant.js"></script>
+    <script>
+var ordersPlaced = new Queue();
+var ordersCooked = new Queue();
+var plates = new Stack();
+var number = 1;
+
+// 2. Neue Funktion um Order zu erzeugen
+// Alternative Schreibweise:
+// function orderFromForm () { ... }
+const orderFromForm = (number) => {
+
+    const items = [];
+
+    const e_margherita = document.getElementById('pizza-margherita-count');
+    const e_funghi = document.getElementById('pizza-funghi-count');
+    const e_spinaci = document.getElementById('pizza-spinaci-count');
+
+    const price_margherita = 7.5;
+    const price_funghi = 9.0;
+    const price_spinaci = 9.0;
+
+    let total = 0;
+
+    for (let i = 0; i < e_margherita.value; i++) {
+        total += price_margherita;
+        items.push('Pizza Margherita');
+    }
+    for (let i = 0; i < e_funghi.value; i++) {
+        total += price_funghi;
+        items.push('Pizza Funghi');
+    }
+    for (let i = 0; i < e_spinaci.value; i++) {
+        total += price_spinaci;
+        items.push('Pizza Spinaci');
+    }
+    console.log(total);
+
+    return new Order(number, items);
+}
+
+const updateTotal = () => {
+
+    const e_margherita = document.getElementById('pizza-margherita-count');
+    const e_funghi = document.getElementById('pizza-funghi-count');
+    const e_spinaci = document.getElementById('pizza-spinaci-count');
+    const e_total = document.getElementById('total-price');
+
+    const price_margherita = 7.5;
+    const price_funghi = 9.0;
+    const price_spinaci = 9.0;
+
+    let total = 0;
+
+    for (let i = 0; i < e_margherita.value; i++) {
+        total += price_margherita;
+    }
+    for (let i = 0; i < e_funghi.value; i++) {
+        total += price_funghi;
+    }
+    for (let i = 0; i < e_spinaci.value; i++) {
+        total += price_spinaci;
+    }
+
+    // Write total to HTML
+    e_total.innerHTML = total;
+}
+
+const placeOrder = () => {
+    // 1. Neue Funktion um Order zu erzeugen
+    // const order = new Order(number, [ null, null ]);
+    const order = orderFromForm(number);
+    console.log(order);
+    ordersPlaced.enqueue(order);
+    number += 1;
+}
+
+const cookOrder = () => {
+    const order = ordersPlaced.dequeue();
+    ordersCooked.enqueue(order);
+}
+
+const eatOrder = () => {
+    const order = ordersCooked.dequeue();
+    order.items.forEach((item) => {
+        plates.push({});
+    });
+}
+
+const washDish = () => {
+    plates.pop();
+}
+
+const handleChange = (event) => {
+    updateTotal();
+}
+    </script>
+</head>
+<body>
+    <div style="grid-area: order;">
+        <h1>Bestellung</h1>
+        <form onsubmit="return handleSubmit(event)" onchange="handleChange(event)">
+            <div>
+                <label for="pizza-margherita-count">Pizza Margherita (7,50)</label>
+                <input type="number" min="0" max="9" value="0" id="pizza-margherita-count">
+            </div>
+            <div>
+                <label for="pizza-funghi-count">Pizza Funghi (9,00)</label>
+                <input type="number" min="0" max="9" value="0" id="pizza-funghi-count">
+            </div>
+            <div>
+                <label for="pizza-spinaci-count">Pizza Spinaci (9,00)</label>
+                <input type="number" min="0" max="9" value="0" id="pizza-spinaci-count">
+            </div>
+
+            <p>Gesamtpreis: <span id="total-price"></span></p>
+
+            <input type="submit" value="Bestellung aufgeben">
+        </form>
+    </div>
+    <div style="grid-area: kitchen;">
+        <h1>Küche</h1>
+        <div class="two-columns">
+            <button id="btn-cook" onclick="handleClickCook(event)">Kochen</button>
+            <ul id="kitchen"></ul>
+        </div>
+    </div>
+    <div style="grid-area: collect;">
+        <h1>Abholung</h1>
+        <span id="text-next">&nbsp;</span>
+    </div>
+    <div style="grid-area: eat;">
+        <h1>Gäste</h1>
+        <ul id="tables"></ul>
+    </div>
+    <div style="grid-area: dishes;">
+        <h1>Geschirrrückgabe</h1>
+        <div class="two-columns">
+            <button id="btn-wash" onclick="handleClickWash(event)">Abwaschen</button>
+            <ul id="plates"></ul>
+        </div>
+    </div>
+</body>
+</html>
