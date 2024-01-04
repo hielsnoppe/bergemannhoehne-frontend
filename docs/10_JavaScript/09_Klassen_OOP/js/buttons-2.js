@@ -2,7 +2,6 @@
  * Button
  * - ImageButton
  * - TextButton
- *   - LinkButton
  *   - SubmitButton
  *   - CancelButton
  */
@@ -10,11 +9,7 @@
 class Button {
     constructor () {}
 
-    render = (document) => {
-        const e_btn1 = document.createElement('button');
-        e_btn1.innerHTML = this.innerHTML();
-        return e_btn1;
-    }
+    render = () => `${this.innerHTML()}`;
 }
 class ImageButton extends Button {
     constructor (src) {
@@ -31,20 +26,6 @@ class TextButton extends Button {
     }
 
     innerHTML = () => `${this.text}`;
-}
-class LinkButton extends TextButton {
-    constructor (text, href) {
-        super(text); // ruft Konstruktor von allg. Klasse auf
-        this.href = href;
-    }
-
-    render = (document) => {
-        const e_link = document.createElement('a');
-        e_link.setAttribute('href', this.href);
-        e_link.style.backgroundColor = '#00ff00';
-        e_link.innerHTML = this.innerHTML();
-        return e_link;
-    }
 }
 class SubmitButton extends TextButton {}
 class CancelButton extends TextButton {}
@@ -64,9 +45,11 @@ function onLoad () {
 
     /**
      * Buttons in das HTML einfügen mit
-     * button.render(document) und
+     * document.createElement(...) und
      * e_div.appendChild(...)
      */
-    const link = new LinkButton('Mein Text', '#');
-    e_div.appendChild(link.render(document));
+    const e_btn1 = document.createElement('button');
+    e_btn1.innerHTML = btn1.render();
+    e_div.appendChild(e_btn1);
+    // e_div.removeChild(e_btn1);
 }

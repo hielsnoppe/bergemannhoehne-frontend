@@ -52,6 +52,6 @@ function onLoad () {
      * button.render(document) und
      * e_div.appendChild(...)
      */
-    const link = new LinkButton('Mein Text', '#');
-    e_div.appendChild(link.render2(document));
+    const e_btn1 = btn1.render(document);
+    e_div.appendChild(e_btn1);
 }

@@ -18,6 +18,10 @@ class ImageButton extends Button {
     }
 
     innerHTML = () => `<img src="${this.src}">`;
+    /* geerbt von Button:
+
+    render = () => `<button>${this.innerHTML()}</button>`;
+    */
 }
 class TextButton extends Button {
     constructor (text) {
@@ -26,6 +30,10 @@ class TextButton extends Button {
     }
 
     innerHTML = () => `${this.text}`;
+    /* geerbt von Button:
+
+    render = () => `<button>${this.innerHTML()}</button>`;
+    */
 }
 class SubmitButton extends TextButton {}
 class CancelButton extends TextButton {}
@@ -45,11 +53,9 @@ function onLoad () {
 
     /**
      * Buttons in das HTML einfügen mit
-     * document.createElement(...) und
-     * e_div.appendChild(...)
+     * e_div.innerHTML = ...
      */
-    const e_btn1 = document.createElement('button');
-    e_btn1.innerHTML = btn1.render();
-    e_div.appendChild(e_btn1);
-    // e_div.removeChild(e_btn1);
+    e_div.innerHTML == '';
+    e_div.innerHTML += btn1.render(); // erzeugt HTML für den Knopf
+    e_div.innerHTML += btn2.render();
 }
